@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>自定义cmder打开时的默认路径</title>
+    <link href="/2022/07/07/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89cmder%E6%89%93%E5%BC%80%E6%97%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/"/>
+    <url>/2022/07/07/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89cmder%E6%89%93%E5%BC%80%E6%97%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p><code>Cmder</code> 是 <code>Win</code> 上非常好用的命令行工具</p></blockquote><ul><li><p>打开设置菜单</p><p><img src="https://s2.loli.net/2022/07/07/qcj18CgTeVu7X6l.png" alt="设置菜单"></p></li><li><p>找到 <code>启动-&gt;任务</code>，并选中 <code>&#123;cmd::Cmder&#125;</code> 项</p></li><li><p>在图中标出的地方编辑</p><p><img src="https://s2.loli.net/2022/07/07/5XC6WqLtjrcG1o3.png" alt="编辑启动命令"></p></li></ul><p>​原代码：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cmd /k &quot;%ConEmuDir%\..\init.bat&quot; -new_console:d:%USERPROFILE%<br></code></pre></td></tr></table></figure><p>​改为</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cmd /k &quot;%ConEmuDir%\..\init.bat&quot; -new_console:d:[你指定的绝对路径]<br></code></pre></td></tr></table></figure><ul><li>重启就好了</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编程软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>解决Xshell6免费版强制升级到收费版的问题</title>
+    <link href="/2022/07/06/windows/technical/%E8%A7%A3%E5%86%B3Xshell6%E5%85%8D%E8%B4%B9%E7%89%88%E5%BC%BA%E5%88%B6%E5%8D%87%E7%BA%A7%E5%88%B0%E6%94%B6%E8%B4%B9%E7%89%88%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>/2022/07/06/windows/technical/%E8%A7%A3%E5%86%B3Xshell6%E5%85%8D%E8%B4%B9%E7%89%88%E5%BC%BA%E5%88%B6%E5%8D%87%E7%BA%A7%E5%88%B0%E6%94%B6%E8%B4%B9%E7%89%88%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p><code>Xshell6</code> 免费版很好用，但是厂商开发了收费版本，软件弹窗强制升级，否则无法使用，比较恶心人</p><p><img src="https://s2.loli.net/2022/07/06/7kCMK2OiIRpc8Lj.png" alt="更新提示"></p><p>目前一劳永逸的办法是修改安装目录的 <code>nslicense.dll</code> 文件，修改更新验证的代码</p><ul><li><p>使用 <code>Sublime Text 3</code> 打开安装目录的 <code>nslicence.dll</code> 文件</p></li><li><p>查找其中 <code>7F0C</code> 开始处，有两处，查找以下代码块</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">7f0c 81f9 8033 e101 0f86 8100<br></code></pre></td></tr></table></figure><p>注意，换行的位置可能不完全一致，只需该代码块前后部分能匹配即是对应代码</p></li><li><p>把 <code>0f86</code> 改成 <code>0f83</code></p></li><li><p>保存重启即可</p></li></ul><blockquote><p>修改完的文件可以保存下来，以后重装，直接覆盖即可</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编程软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>自定义JetBrains软件缓存目录</title>
+    <link href="/2022/07/04/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89JetBrains%E8%BD%AF%E4%BB%B6%E7%BC%93%E5%AD%98%E7%9B%AE%E5%BD%95/"/>
+    <url>/2022/07/04/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89JetBrains%E8%BD%AF%E4%BB%B6%E7%BC%93%E5%AD%98%E7%9B%AE%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p><code>JetBrains IDE</code> 的默认配置目录通常为： <code>C:\Users\.IDE name</code>，尤其是项目缓存，比较占用C盘空间，可以通过修改项目配置文件，来自定义编辑器的配置目录和缓存目录</p><p>配置文件路径在 <code>IDE</code> 安装目录下 <code>/bin/idea.properties</code> 文件<img src="https://s2.loli.net/2022/07/04/ZveH9nQruDVYEb3.png" alt="properties文件位置"  /></p><p>根据图中示意，修改想要的目标路径即可， <code>WebStorm</code>、<code>PyCharm</code> 同理<img src="https://s2.loli.net/2022/07/04/1R3yHdurQLTiBw7.png" alt="配置项" style="zoom:80%;" /></p><p>修改保存后，重启编辑器</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编程软件</tag>
+      
+      <tag>JetBrains</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JetBrains软件2019.3利用补丁永久激活</title>
+    <link href="/2022/07/04/windows/technical/jetbrains%E8%BD%AF%E4%BB%B62019.3%E5%88%A9%E7%94%A8%E8%A1%A5%E4%B8%81%E6%B0%B8%E4%B9%85%E7%A0%B4%E8%A7%A3%E6%BF%80%E6%B4%BB/"/>
+    <url>/2022/07/04/windows/technical/jetbrains%E8%BD%AF%E4%BB%B62019.3%E5%88%A9%E7%94%A8%E8%A1%A5%E4%B8%81%E6%B0%B8%E4%B9%85%E7%A0%B4%E8%A7%A3%E6%BF%80%E6%B4%BB/</url>
+    
+    <content type="html"><![CDATA[<h4 id="JetBrains历史版本下载地址"><a href="#JetBrains历史版本下载地址" class="headerlink" title="JetBrains历史版本下载地址"></a>JetBrains历史版本下载地址</h4><ul><li><p><a href="https://www.jetbrains.com/zh-cn/phpstorm/download/other.html">PhpStorm</a></p></li><li><p><a href="https://www.jetbrains.com/zh-cn/webstorm/download/other.html">WebStorm</a></p></li><li><p>其他软件可根据 <code>Url</code> 路径规则调整：</p></li></ul><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">https://www.jetbrains.com/zh-cn/[phpstorm|webstorm|pycharm]/download/other.html<br></code></pre></td></tr></table></figure><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol><li><p>下载安装软件</p></li><li><p>打开软件，进入激活界面，选择试用30天</p></li><li><p>编辑 <code>vmoptions</code> 文件</p><img src="https://s2.loli.net/2022/07/04/cJPfUWsOiQzGv1K.png" alt="IDE内打开vmoptions文件" style="zoom:80%;" /></li><li><p>末尾追加一行：</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">-javaagent:D:<span class="hljs-keyword">\Program</span> Files<span class="hljs-keyword">\JetBrains</span><span class="hljs-keyword">\jetbrains</span>-agent.jar<br></code></pre></td></tr></table></figure><p>根据 <code>jetbrains-agent.jar</code> 文件具体位置自行调整</p></li><li><p><strong>重启 <code>IDE</code></strong></p><p>重要，一定要重启！</p></li><li><p>进入激活界面，填入指定激活码</p><p>任选一个即可：</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">A82DEE284F-eyJsaWNlbnNlSWQiOiJBODJERUUyODRGIiwibGljZW5zZWVOYW1lIjoiaHR0cHM6Ly96aGlsZS5pbyIsImFzc2lnbmVlTmFtZSI6IiIsImFzc2lnbmVlRW1haWwiOiIiLCJsaWNlbnNlUmVzdHJpY3Rpb24iOiJVbmxpbWl0ZWQgbGljZW5zZSB0aWxsIGVuZCBvZiB0aGUgY2VudHVyeS4iLCJjaGVja0NvbmN1cnJlbnRVc2UiOmZhbHNlLCJwcm9kdWN0cyI6W3siY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSRCIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IlJDIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiRE0iLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJBQyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkRQTiIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkdPIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUFMiLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IlBDIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUlNVIiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In1dLCJoYXNoIjoiODkwNzA3MC8wIiwiZ3JhY2VQZXJpb2REYXlzIjowLCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-5epo90Xs7KIIBb8ckoxnB/AZQ8Ev7rFrNqwFhBAsQYsQyhvqf1FcYdmlecFWJBHSWZU9b41kvsN4bwAHT5PiznOTmfvGv1MuOzMO0VOXZlc+edepemgpt+t3GUHvfGtzWFYeKeyCk+CLA9BqUzHRTgl2uBoIMNqh5izlDmejIwUHLl39QOyzHiTYNehnVN7GW5+QUeimTr/koVUgK8xofu59Tv8rcdiwIXwTo71LcU2z2P+T3R81fwKkt34evy7kRch4NIQUQUno//Pl3V0rInm3B2oFq9YBygPUdBUbdH/KHROyohZRD8SaZJO6kUT0BNvtDPKF4mCT1saWM38jkw==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ndaik1GD0nyTdqkZgURQZGW+RGxCdBITPXIwpjhhaD0SXGa4XSZBEBoiPdY6XV6pOfUJeyfi9dXsY4MmT0D+sKoST3rSw96xaf9FXPvOjn4prMTdj3Ji3CyQrGWeQU2nzYqFrp1QYNLAbaViHRKuJrYHI6GCvqCbJe0LQ8qqUiVMA9wG/PQwScpNmTF9Kp2Iej+Z5OUxF33zzm+vg/nYV31HLF7fJUAplI/1nM+ZG8K+AXWgYKChtknl3sW9PCQa3a3imPL9GVToUNxc0wcuTil8mqveWcSQCHYxsIaUajWLpFzoO2AhK4mfYBSStAqEjoXRTuj17mo8Q6M2SHOcwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQBonMu8oa3vmNAa4RQP8gPGlX3SQaA3WCRUAj6Zrlk8AesKV1YSkh5D2l+yUk6njysgzfr1bIR5xF8eup5xXc4/G7NtVYRSMvrd6rfQcHOyK5UFJLm+8utmyMIDrZOzLQuTsT8NxFpbCVCfV5wNRu4rChrCuArYVGaKbmp9ymkw1PU6+HoO5i2wU3ikTmRv8IRjrlSStyNzXpnPTwt7bja19ousk56r40SmlmC04GdDHErr0ei2UbjUua5kw71Qn9g02tL9fERI2sSRjQrvPbn9INwRWl5+k05mlKekbtbu2ev2woJFZK4WEXAd/GaAdeZZdumv8T2idDFL7cAirJwcrbfpawPeXr52oKTPnXfi0l5+g9Gnt/wfiXCrPElX6ycTR6iL3GC2VR4jTz6YatT4Ntz59/THOT7NJQhr6AyLkhhJCdkzE2cob/KouVp4ivV7Q3Fc6HX7eepHAAF/DpxwgOrg9smX6coXLgfp0b1RU2u/tUNID04rpNxTMueTtrT8WSskqvaJd3RH8r7cnRj6Y2hltkja82HlpDURDxDTRvv+krbwMr26SB/40BjpMUrDRCeKuiBahC0DCoU/4+ze1l94wVUhdkCfL0GpJrMSCDEK+XEurU18Hb7WT+ThXbkdl6VpFdHsRvqAnhR2g4b+Qzgidmuky5NUZVfEaZqV/g==<br></code></pre></td></tr></table></figure><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">3AGXEJXFK9-eyJsaWNlbnNlSWQiOiIzQUdYRUpYRks5IiwibGljZW5zZWVOYW1lIjoiaHR0cHM6Ly96aGlsZS5pbyIsImFzc2lnbmVlTmFtZSI6IiIsImFzc2lnbmVlRW1haWwiOiIiLCJsaWNlbnNlUmVzdHJpY3Rpb24iOiIiLCJjaGVja0NvbmN1cnJlbnRVc2UiOmZhbHNlLCJwcm9kdWN0cyI6W3siY29kZSI6IklJIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkFDIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkRQTiIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJQUyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJHTyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJETSIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJDTCIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSUzAiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkQiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUEMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUk0iLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiV1MiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREIiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUlNVIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9XSwiaGFzaCI6IjEyNzk2ODc3LzAiLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0=-WGTHs6XpDhr+uumvbwQPOdlxWnQwgnGaL4eRnlpGKApEEkJyYvNEuPWBSrQkPmVpim/8Sab6HV04Dw3IzkJT0yTc29sPEXBf69+7y6Jv718FaJu4MWfsAk/ZGtNIUOczUQ0iGKKnSSsfQ/3UoMv0q/yJcfvj+me5Zd/gfaisCCMUaGjB/lWIPpEPzblDtVJbRexB1MALrLCEoDv3ujcPAZ7xWb54DiZwjYhQvQ+CvpNNF2jeTku7lbm5v+BoDsdeRq7YBt9ANLUKPr2DahcaZ4gctpHZXhG96IyKx232jYq9jQrFDbQMtVr3E+GsCekMEWSD//dLT+HuZdc1sAIYrw==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ndaik1GD0nyTdqkZgURQZGW+RGxCdBITPXIwpjhhaD0SXGa4XSZBEBoiPdY6XV6pOfUJeyfi9dXsY4MmT0D+sKoST3rSw96xaf9FXPvOjn4prMTdj3Ji3CyQrGWeQU2nzYqFrp1QYNLAbaViHRKuJrYHI6GCvqCbJe0LQ8qqUiVMA9wG/PQwScpNmTF9Kp2Iej+Z5OUxF33zzm+vg/nYV31HLF7fJUAplI/1nM+ZG8K+AXWgYKChtknl3sW9PCQa3a3imPL9GVToUNxc0wcuTil8mqveWcSQCHYxsIaUajWLpFzoO2AhK4mfYBSStAqEjoXRTuj17mo8Q6M2SHOcwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQBonMu8oa3vmNAa4RQP8gPGlX3SQaA3WCRUAj6Zrlk8AesKV1YSkh5D2l+yUk6njysgzfr1bIR5xF8eup5xXc4/G7NtVYRSMvrd6rfQcHOyK5UFJLm+8utmyMIDrZOzLQuTsT8NxFpbCVCfV5wNRu4rChrCuArYVGaKbmp9ymkw1PU6+HoO5i2wU3ikTmRv8IRjrlSStyNzXpnPTwt7bja19ousk56r40SmlmC04GdDHErr0ei2UbjUua5kw71Qn9g02tL9fERI2sSRjQrvPbn9INwRWl5+k05mlKekbtbu2ev2woJFZK4WEXAd/GaAdeZZdumv8T2idDFL7cAirJwcrbfpawPeXr52oKTPnXfi0l5+g9Gnt/wfiXCrPElX6ycTR6iL3GC2VR4jTz6YatT4Ntz59/THOT7NJQhr6AyLkhhJCdkzE2cob/KouVp4ivV7Q3Fc6HX7eepHAAF/DpxwgOrg9smX6coXLgfp0b1RU2u/tUNID04rpNxTMueTtrT8WSskqvaJd3RH8r7cnRj6Y2hltkja82HlpDURDxDTRvv+krbwMr26SB/40BjpMUrDRCeKuiBahC0DCoU/4+ze1l94wVUhdkCfL0GpJrMSCDEK+XEurU18Hb7WT+ThXbkdl6VpFdHsRvqAnhR2g4b+Qzgidmuky5NUZVfEaZqV/g==<br></code></pre></td></tr></table></figure><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">KNBB2QUUR1-eyJsaWNlbnNlSWQiOiJLTkJCMlFVVVIxIiwibGljZW5zZWVOYW1lIjoiZ2hib2tlIiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IiIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiSUkiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiQUMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiRFBOIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IlBTIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkdPIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkRNIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkNMIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IlJTMCIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSQyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSRCIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJQQyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSTSIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJXUyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJEQiIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJEQyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSU1UiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In1dLCJoYXNoIjoiMTI3OTY4NzcvMCIsImdyYWNlUGVyaW9kRGF5cyI6NywiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-1iV7BA/baNqv0Q5yUnAphUmh66QhkDRX+qPL09ICuEicBqiPOBxmVLLCVUpkxhrNyfmOtat2LcHwcX/NHkYXdoW+6aS0S388xe1PV2oodiPBhFlEaOac42UQLgP4EidfGQSvKwC9tR1zL5b2CJPQKZ7iiHh/iKBQxP6OBMUP1T7j3Fe1rlxfYPc92HRZf6cO+C0+buJP5ERZkyIn5ZrVM4TEnWrRHbpL8SVNq4yqfc+NwoRzRSNC++81VDS3AXv9c91YeZJz6JXO7AokIk54wltr42FLNuKbozvB/HCxV9PA5vIiM+kZY1K0w5ytgxEYKqA87adA7R5xL/crpaMxHQ==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ndaik1GD0nyTdqkZgURQZGW+RGxCdBITPXIwpjhhaD0SXGa4XSZBEBoiPdY6XV6pOfUJeyfi9dXsY4MmT0D+sKoST3rSw96xaf9FXPvOjn4prMTdj3Ji3CyQrGWeQU2nzYqFrp1QYNLAbaViHRKuJrYHI6GCvqCbJe0LQ8qqUiVMA9wG/PQwScpNmTF9Kp2Iej+Z5OUxF33zzm+vg/nYV31HLF7fJUAplI/1nM+ZG8K+AXWgYKChtknl3sW9PCQa3a3imPL9GVToUNxc0wcuTil8mqveWcSQCHYxsIaUajWLpFzoO2AhK4mfYBSStAqEjoXRTuj17mo8Q6M2SHOcwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQBonMu8oa3vmNAa4RQP8gPGlX3SQaA3WCRUAj6Zrlk8AesKV1YSkh5D2l+yUk6njysgzfr1bIR5xF8eup5xXc4/G7NtVYRSMvrd6rfQcHOyK5UFJLm+8utmyMIDrZOzLQuTsT8NxFpbCVCfV5wNRu4rChrCuArYVGaKbmp9ymkw1PU6+HoO5i2wU3ikTmRv8IRjrlSStyNzXpnPTwt7bja19ousk56r40SmlmC04GdDHErr0ei2UbjUua5kw71Qn9g02tL9fERI2sSRjQrvPbn9INwRWl5+k05mlKekbtbu2ev2woJFZK4WEXAd/GaAdeZZdumv8T2idDFL7cAirJwcrbfpawPeXr52oKTPnXfi0l5+g9Gnt/wfiXCrPElX6ycTR6iL3GC2VR4jTz6YatT4Ntz59/THOT7NJQhr6AyLkhhJCdkzE2cob/KouVp4ivV7Q3Fc6HX7eepHAAF/DpxwgOrg9smX6coXLgfp0b1RU2u/tUNID04rpNxTMueTtrT8WSskqvaJd3RH8r7cnRj6Y2hltkja82HlpDURDxDTRvv+krbwMr26SB/40BjpMUrDRCeKuiBahC0DCoU/4+ze1l94wVUhdkCfL0GpJrMSCDEK+XEurU18Hb7WT+ThXbkdl6VpFdHsRvqAnhR2g4b+Qzgidmuky5NUZVfEaZqV/g==<br></code></pre></td></tr></table></figure></li></ol><p>参考<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[IntelliJ IDEA 2019.3利用补丁永久破解激活教程_心得技巧_积微成著 (jiweichengzhu.com)](https://www.jiweichengzhu.com/article/2940ed65c94f4671ae3f3aa72e168673)">[1]</span></a></sup></p><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.jiweichengzhu.com/article/2940ed65c94f4671ae3f3aa72e168673">IntelliJ IDEA 2019.3利用补丁永久破解激活教程_心得技巧_积微成著 (jiweichengzhu.com)</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编程软件</tag>
+      
+      <tag>JetBrains</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>一个小巧好用的网速监控软件</title>
+    <link href="/2022/07/01/windows/software/NetSpeedMonitor/"/>
+    <url>/2022/07/01/windows/software/NetSpeedMonitor/</url>
+    
+    <content type="html"><![CDATA[<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul><li>简单易用，不占内存，轻量级扩展，只有一个 <code>DLL</code> 和一个启动程序，文件大小约 <code>1M</code></li><li>集成在 <code>Windows</code> 系统桌面任务栏中，实时显示网络的上传和下载速度</li></ul><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>​点这儿：<a href="https://www.onlinedown.net/soft/10011950.htm">下载NetSpeedMonitor</a></p><p>​别理睬页面上花里胡哨的的安装方式</p><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ul><li><p>解压下载下来的 <code>.rar</code> 文件，得到这样一个目录</p><p><img src="https://s2.loli.net/2022/07/01/54BquRMbEVLtc2w.png" alt="image-20220701170552675"></p></li><li><p>选择需要的版本，把目录中的文件移动到 <code>C:\Windows\System32</code> 目录下，右键以管理员身份运行 <code>安装.bat</code> 文件，装完就可以删了这个文件</p></li><li><p>右击任务栏，开启任务栏监控</p><img src="https://s2.loli.net/2022/07/01/GPb1D76f3u25IlE.png" alt="image-20220701171038837" style="zoom: 67%;" /><p><img src="https://s2.loli.net/2022/07/01/wR8VtBKr6c1NZde.png" alt="image-20220701171156467"></p></li><li><p>选择要监控的网络接口，选错了就监控不到了</p><img src="https://s2.loli.net/2022/07/01/tXwJjIpWRMs2v7a.png" alt="image-20220701171323017" style="zoom:67%;" /></li><li><p>其它配置没研究过</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>自定义安装MicrosoftOffice2019</title>
+    <link href="/2022/07/01/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%89%E8%A3%85MicrosoftOffice2019/"/>
+    <url>/2022/07/01/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%89%E8%A3%85MicrosoftOffice2019/</url>
+    
+    <content type="html"><![CDATA[<p><code>Office2016</code> 之后，官方安装包已经不支持自定义安装，所有套件一大坨全部装上，对有软件洁癖的人很不友好 </p><hr><ul><li><h4 id="下载-Office-Deployment-Tool"><a href="#下载-Office-Deployment-Tool" class="headerlink" title="下载 Office Deployment Tool"></a>下载 <code>Office Deployment Tool</code></h4><p>  点这儿：<a href="https://www.microsoft.com/en-us/download/office.aspx">Office - Microsoft Download Center</a></p>  <img src="https://s2.loli.net/2022/07/01/gc8fUZX2ztVwYdn.png" alt="image-20220701154751847" style="zoom: 80%;" /></li><li><h4 id="根据提示下载下来一个-exe-文件"><a href="#根据提示下载下来一个-exe-文件" class="headerlink" title="根据提示下载下来一个 exe 文件"></a>根据提示下载下来一个 <code>exe</code> 文件</h4><p>双击执行，会解压出一个目录，长这样：</p>  <img src="https://s2.loli.net/2022/07/01/HpJyqnRKoFz4YuD.png" alt="img" style="zoom:150%;" /></li></ul><p>​只保留 <code>setup.exe</code> 其它的没用，删掉</p><ul><li><h4 id="创建自定义配置文件"><a href="#创建自定义配置文件" class="headerlink" title="创建自定义配置文件"></a>创建自定义配置文件</h4><p>点这儿：<a href="https://config.office.com/">Microsoft 365 应用版管理中心</a></p><img src="https://s2.loli.net/2022/07/01/cGIueosE7wRptXF.png" alt="image-20220701155913466" style="zoom: 67%;" /><p>点击创建</p><img src="https://s2.loli.net/2022/07/01/ozUnPQAJsF9l3vB.png" alt="image-20220701160116274" style="zoom:80%;" /><p>根据自己需要，选择安装哪些应用</p><img src="https://s2.loli.net/2022/07/01/OvQUFD3KXNlfayh.png" alt="image-20220701160405814" style="zoom:80%;" /><p>选择 <code>简体中文</code></p><img src="https://s2.loli.net/2022/07/01/YvCQVT5nz46dRyL.png" alt="image-20220701160242623" style="zoom: 67%;" /><p>把 <code>自动检查更新</code> 关了</p><img src="https://s2.loli.net/2022/07/01/uLbqkfy8sT9UvXO.png" alt="image-20220701160620305" style="zoom:80%;" /><p>把 <code>自动接受EULA</code> 打开，安装时自动接受条款协议</p><img src="https://s2.loli.net/2022/07/01/LSyRTq3XaKMOr25.png" alt="image-20220701161005189" style="zoom:67%;" /><p>最后点右边导出按钮</p><img src="https://s2.loli.net/2022/07/01/E6QikUGRy73uA2r.png" alt="点击导出按钮" style="zoom:80%;" /><p>导出的文件格式</p><img src="https://s2.loli.net/2022/07/06/vmkeZdEYR2JAfIw.png" alt="img" style="zoom:80%;" /><p>给保存的文件起个英文名</p></li><li><h4 id="下载-Microsoft-Office-2019"><a href="#下载-Microsoft-Office-2019" class="headerlink" title="下载 Microsoft Office 2019"></a>下载 <code>Microsoft Office 2019</code></h4><p>打开命令行，进入下载下来的文件目录，执行命令（<code>***.xml</code> 是前一步下载下来的配置文件名称）：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">.\setup.exe /download ***.xml<br></code></pre></td></tr></table></figure><p>回车后开始下载，没有任何提示</p></li><li><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载完成后，执行安装命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">.\setup.exe /configure ***.xml<br></code></pre></td></tr></table></figure><p>然后就可以看到安装界面了，等着安装完了就行</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Win10企业版LTSC2019/2021安装微软商店</title>
+    <link href="/2022/07/01/windows/technical/Win10LTSC%E5%AE%89%E8%A3%85%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97/"/>
+    <url>/2022/07/01/windows/technical/Win10LTSC%E5%AE%89%E8%A3%85%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97/</url>
+    
+    <content type="html"><![CDATA[<p><code>Win10 LTSC</code> 版过于纯净，有时不得不需要从微软商店下载某些应用，如动态主题（<code>Dynamic theme</code>）、子系统等</p><p><code>GitHub</code> 上有网友提供了安装微软商店的程序，开源地址：</p><p><a href="https://github.com/WuZhengqiang666/LTSC-Add-MicrosoftStore">LTSC-Add-MicrosoftStore</a></p><p><a href="https://github.com/lixuy/LTSC-Add-MicrosoftStore/archive/2019.zip">下载地址</a></p><p>比较好用。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Win10技巧</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2022/06/30/hello-world/"/>
+    <url>/2022/06/30/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
