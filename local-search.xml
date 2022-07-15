@@ -4,6 +4,83 @@
   
   
   <entry>
+    <title>Win10右键菜单添加CMD</title>
+    <link href="/2022/07/15/windows/technical/Win10%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0CMD/"/>
+    <url>/2022/07/15/windows/technical/Win10%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0CMD/</url>
+    
+    <content type="html"><![CDATA[<p><strong>右键打开 <code>PowerShell</code> 挺好用，可惜 <code>Anaconda</code> 不支持 <code>PowerShell</code> ，还是把 <code>cmd</code> 命令行放到右键菜单里比较方便</strong></p><ol><li><p><code>win+r</code> 打开快速命令框</p></li><li><p>输入 <code>regedit</code> 打开注册表</p></li><li><p>在地址栏输入 <code>HKEY_CLASSES_ROOT\Directory\Background\shell</code> 转到指定目录</p><p><img src="https://s2.loli.net/2022/07/15/p1Oac6XxIy7rPWJ.png" alt="shell目录"></p></li><li><p>右击 <code>shell</code> 目录，新建-&gt;项，名字就是右键菜单的名字</p><p><img src="https://s2.loli.net/2022/07/15/VGuDpSd8OQNAqFc.png" alt="shell"></p></li><li><p>右击新建的目录，新建-&gt;项，名称 <code>command</code></p></li><li><p>右键新建的目录，新建 <code>DWORD</code> 值，值为 <code>639bc8</code></p></li><li><p>双击 <code>command</code> 下的 <code>默认</code> 图标，弹出的对话框内填入下面内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmd.exe /s /k <span class="hljs-built_in">pushd</span> <span class="hljs-string">&quot;%V&quot;</span><br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/07/15/A7xNw1HvGe3t9nz.png" alt="命令"></p></li></ol><ul><li><p>给右键菜单项添加图标</p><ol><li><p>在目标命令下，新建名为 <code>Icon</code> 的字符串值</p></li><li><p>值为图片的绝对路径，如果是程序默认图标，可填执行程序的路径</p><p><img src="https://s2.loli.net/2022/07/15/KNZPhoV5RDTra1M.png" alt="添加图标"></p></li></ol></li><li><p>实现 <code>shift+右键</code> 显示命令菜单</p><p>在命令项下，添加名为 <code>Extended</code> 的字符串值，值为空即可</p><p><img src="https://s2.loli.net/2022/07/15/iQlhzNEGg891rIP.png" alt="实现shift+右键显示命令"></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Win10技巧</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>XMind-ZEN破解方法</title>
+    <link href="/2022/07/15/windows/software/XMind%20ZEN%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/"/>
+    <url>/2022/07/15/windows/software/XMind%20ZEN%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p> <code>XMind ZEN</code> 是一款很强大的思维导图软件，图形种类多，功能全，用着很不错</p></blockquote><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><ul><li><p><a href="https://dl2.xmind.cn/XMind-ZEN-for-Windows-64bit-10.0.0-201911180033.exe">官网下载 <code>v10.0</code> 版本</a></p></li><li><p><a href="https://wwp.lanzoum.com/iDZ7i07uj1ad">破解补丁</a></p></li></ul><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul><li><p>双击安装软件</p></li><li><p>替换破解文件</p><ul><li>找到安装目录下这个文件</li></ul><p><img src="https://s2.loli.net/2022/07/15/HcLZd71zjmYlsiw.png" alt="app.asar"></p><ul><li>用破解补丁替换</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>找回windows的照片查看器</title>
+    <link href="/2022/07/08/windows/technical/%E6%89%BE%E5%9B%9Ewindows%E7%9A%84%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8/"/>
+    <url>/2022/07/08/windows/technical/%E6%89%BE%E5%9B%9Ewindows%E7%9A%84%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<p><code>Win7</code> 上的照片查看器查看图片很方便，但是到 <code>Win10</code> 给砍了，网上找到了找回照片查看器的方法</p><ul><li><p>创建一个文本文档，并输入以下代码：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs shell">Windows Registry Editor Version 5.00<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.jpg]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.jpeg]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.gif]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.png]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.bmp]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.tiff]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br><br>; Change Extension&#x27;s File Type<br><br>[HKEY_CURRENT_USER\Software\Classes\.ico]<br><br>@=&quot;PhotoViewer.FileAssoc.Tiff&quot;<br></code></pre></td></tr></table></figure></li><li><p>保存为 <code>.reg</code> 格式文件</p><p><img src="https://s2.loli.net/2022/07/08/NVKXrevCqYEDsIt.png" alt="reg文件"></p></li><li><p>双击运行，会弹出提示，选择继续</p><p><img src="https://s2.loli.net/2022/07/08/MjHqKaCbX8wszQl.png" alt="选择是"></p></li><li><p>注册表写入成功</p><p><img src="https://s2.loli.net/2022/07/08/s2K6hiX8OzLFIMm.png" alt="注册表写入成功"></p></li><li><p>找一张图片，右击选择打开方式，<code>windows照片查看器</code> 又回来了</p><p><img src="https://s2.loli.net/2022/07/08/785AaObuNZFMKHl.png" alt="Windows照片查看器"></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Win10技巧</tag>
+      
+      <tag>常用软件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>自定义cmder打开时的默认路径</title>
     <link href="/2022/07/07/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89cmder%E6%89%93%E5%BC%80%E6%97%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/"/>
     <url>/2022/07/07/windows/technical/%E8%87%AA%E5%AE%9A%E4%B9%89cmder%E6%89%93%E5%BC%80%E6%97%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84/</url>
@@ -13,7 +90,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -38,7 +115,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -63,7 +140,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -90,7 +167,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -117,7 +194,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -142,7 +219,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -167,7 +244,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
