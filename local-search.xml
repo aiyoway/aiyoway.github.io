@@ -4,6 +4,52 @@
   
   
   <entry>
+    <title>entity</title>
+    <link href="/2023/05/25/java/jpa/entity/"/>
+    <url>/2023/05/25/java/jpa/entity/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>类注解</p><ul><li><code>@Data</code> 为 <code>lombok</code> 注解，会自动为该类添加 <code>getter/setter</code> 方法。</li><li><code>@Entity</code> 表明该类是一个实体类，默认使用 <code>ORM</code> 规则，即类名为数据库表名，类中的字段名为数据表中的字段名，可通过注解参数 <code>name=&quot;tableName&quot;</code> 指定表名。</li><li><code>@Table</code> 注解是非必须项，通常用于当实体类与其映射的数据库表名不同名时使用，它的优先级高于 <code>@Entity</code> ，即：当 <code>@Entity</code> 注解与 <code>@Table</code>  注解指定的表名不同时，<code>@Table</code>  注解生效。</li></ul></li><li><p>属性注解</p><ul><li><code>@Id</code> 定义属性为数据库的主键,一个实体里面必须有一个主键，当声明了 <code>@Entity</code> 注解，该注解也必须声明；<code>@Id</code> 通常和<code>@GeneratedValue</code> 配合使用或成对出现。</li><li><code>@GenerateValue</code>  <code>JPA</code> 通用策略生成器，通常使用参数 <code>strategy = GenerationType.IDENTITY</code> 来表示自增主键。</li><li><code>@Clumn</code> 定义该属性对应数据表中的字段。</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>java</category>
+      
+      <category>jpa</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>hexo常用命令</title>
+    <link href="/2023/05/25/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <url>/2023/05/25/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>新建文章</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件名为“new article.md&quot;</span><br>hexo n <span class="hljs-string">&quot;new article&quot;</span><br></code></pre></td></tr></table></figure></li><li><p>本地启动预览服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure></li><li><p>发布到 <code>git hub</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清除缓存</span><br>hexo clean<br><span class="hljs-comment"># 生成静态页</span><br>hexo g<br><span class="hljs-comment"># 部署到github</span><br>hexo d<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程备忘</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JetBrains2021.3破解方法</title>
     <link href="/2022/09/22/technical/JetBrains2021.3%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/"/>
     <url>/2022/09/22/technical/JetBrains2021.3%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/</url>
@@ -13,7 +59,7 @@
     
     <categories>
       
-      <category>Windowsx</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -67,7 +113,7 @@
     
     <categories>
       
-      <category>windows</category>
+      <category>Windows</category>
       
     </categories>
     
@@ -99,7 +145,7 @@
     
     <tags>
       
-      <tag>软件</tag>
+      <tag>常用软件</tag>
       
     </tags>
     
