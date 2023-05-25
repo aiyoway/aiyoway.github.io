@@ -16,15 +16,15 @@
   <meta name="author" content="Leejohn">
   <meta name="keywords" content="">
   
-    <meta name="description" content="新建文章 12# 文件名为“new article.md&quot;hexo n &quot;new article&quot;  本地启动预览服务 1hexo s  发布到 git hub 123456# 清除缓存hexo clean# 生成静态页hexo g# 部署到githubhexo d">
+    <meta name="description" content="命令行 新建文章 1234# 文件名为“new article.md&quot;hexo n &quot;new article&quot;# 指定文件目录，目录要写d文件名hexo n &quot;title&quot; -p path&#x2F;to&#x2F;file  本地启动预览服务 1hexo s  发布到 git hub 123456# 清除缓存hexo clean# 生成静态页hexo g# 部署到g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo常用命令">
 <meta property="og:url" content="http://example.com/2023/05/25/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="新建文章 12# 文件名为“new article.md&quot;hexo n &quot;new article&quot;  本地启动预览服务 1hexo s  发布到 git hub 123456# 清除缓存hexo clean# 生成静态页hexo g# 部署到githubhexo d">
+<meta property="og:description" content="命令行 新建文章 1234# 文件名为“new article.md&quot;hexo n &quot;new article&quot;# 指定文件目录，目录要写d文件名hexo n &quot;title&quot; -p path&#x2F;to&#x2F;file  本地启动预览服务 1hexo s  发布到 git hub 123456# 清除缓存hexo clean# 生成静态页hexo g# 部署到g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T02:26:29.000Z">
-<meta property="article:modified_time" content="2023-05-25T02:37:09.073Z">
+<meta property="article:modified_time" content="2023-05-25T09:03:38.744Z">
 <meta property="article:author" content="Leejohn">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -155,18 +155,6 @@
             </li>
           
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -218,7 +206,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          127 字
+          430 字
         
       </span>
     
@@ -229,7 +217,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -272,15 +260,25 @@
             
               <div class="markdown-body">
                 
-                <ul>
+                <h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><ul>
 <li><p>新建文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件名为“new article.md&quot;</span><br>hexo n <span class="hljs-string">&quot;new article&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件名为“new article.md&quot;</span><br>hexo n <span class="hljs-string">&quot;new article&quot;</span><br><span class="hljs-comment"># 指定文件目录，目录要写d文件名</span><br>hexo n <span class="hljs-string">&quot;title&quot;</span> -p path/to/file<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>本地启动预览服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>发布到 <code>git hub</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清除缓存</span><br>hexo clean<br><span class="hljs-comment"># 生成静态页</span><br>hexo g<br><span class="hljs-comment"># 部署到github</span><br>hexo d<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="分类与标签"><a href="#分类与标签" class="headerlink" title="分类与标签"></a>分类与标签</h4><ul>
+<li><p>分类</p>
+<p><code>category</code> 与 <code>categories</code> 等效</p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 一般用法，给文章添加分类</span><br>category: 类别<br><span class="hljs-comment"># 层级分类，将文章添加到子分类目录下</span><br>category: [类别,子类]<br><span class="hljs-comment"># 子分类等效写法</span><br>category:<br>	- 类别<br>	- 子类<br><span class="hljs-comment"># 多分类写法，官方指定写法，文章分类到“类别1”、“类别2”及“类别1”的子类“子类”下</span><br>category:<br>	- [类别1]<br>	- [类别2]<br>	- [类别1,子类]<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>标签</p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">tag:<br>	- 标签1<br>	- 标签2<br><span class="hljs-comment"># 与以下写法等效</span><br>tag: [标签1,标签2]<br></code></pre></td></tr></table></figure></li>
 </ul>
 
                 
@@ -300,8 +298,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%A4%87%E5%BF%98/" class="category-chain-item">教程备忘</a>
+  <a href="/categories/%E6%8A%80%E5%B7%A7/" class="category-chain-item">技巧</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E5%B7%A7/hexo/" class="category-chain-item">hexo</a>
+  
+  
+
   
 
       </span>
@@ -363,9 +368,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/25/java/jpa/entity/" title="entity">
+                      <a href="/2023/05/25/java/jpa/%E5%AE%9E%E4%BD%93%E7%B1%BB%E6%B3%A8%E8%A7%A3/" title="实体类注解">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">entity</span>
+                        <span class="hidden-mobile">实体类注解</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

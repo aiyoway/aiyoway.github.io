@@ -4,9 +4,38 @@
   
   
   <entry>
-    <title>entity</title>
-    <link href="/2023/05/25/java/jpa/entity/"/>
-    <url>/2023/05/25/java/jpa/entity/</url>
+    <title>Spring-boot-devtools设置</title>
+    <link href="/2023/05/25/java/SpringBoot/Spring-boot-dev-tools%E8%AE%BE%E7%BD%AE/"/>
+    <url>/2023/05/25/java/SpringBoot/Spring-boot-dev-tools%E8%AE%BE%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Idea2021-配置-devtools-自动重载"><a href="#Idea2021-配置-devtools-自动重载" class="headerlink" title="Idea2021 配置 devtools 自动重载"></a><code>Idea2021</code> 配置 <code>devtools</code> 自动重载</h4><ul><li><p>添加依赖</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- devtools依赖此配置（否则，devtools不生效）。 --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">fork</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">fork</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure></li><li><p><code>IDE</code> 勾选配置</p><p><img src="https://s2.loli.net/2023/05/25/5SLVpC2UqPzdeWr.png" alt="img"><img src="https://s2.loli.net/2023/05/25/qIPdoyRCcaQtFmM.png" alt="img"></p></li><li><p>修改当前项目配置</p><p><img src="https://s2.loli.net/2023/05/25/Vwx3jRCrMh68cEp.png" alt="img"></p></li><li><p>执行 <code>rerun</code> 命令</p></li></ul><h4 id="关闭-Devtools"><a href="#关闭-Devtools" class="headerlink" title="关闭 Devtools"></a>关闭 <code>Devtools</code></h4><p><code>application.yaml</code> 中增加以下配置：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">devtools:</span><br>    <span class="hljs-attr">restart:</span><br>  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>java</category>
+      
+      <category>SpringBoot</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>java</tag>
+      
+      <tag>SpringBoot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>实体类注解</title>
+    <link href="/2023/05/25/java/jpa/%E5%AE%9E%E4%BD%93%E7%B1%BB%E6%B3%A8%E8%A7%A3/"/>
+    <url>/2023/05/25/java/jpa/%E5%AE%9E%E4%BD%93%E7%B1%BB%E6%B3%A8%E8%A7%A3/</url>
     
     <content type="html"><![CDATA[<ul><li><p>类注解</p><ul><li><code>@Data</code> 为 <code>lombok</code> 注解，会自动为该类添加 <code>getter/setter</code> 方法。</li><li><code>@Entity</code> 表明该类是一个实体类，默认使用 <code>ORM</code> 规则，即类名为数据库表名，类中的字段名为数据表中的字段名，可通过注解参数 <code>name=&quot;tableName&quot;</code> 指定表名。</li><li><code>@Table</code> 注解是非必须项，通常用于当实体类与其映射的数据库表名不同名时使用，它的优先级高于 <code>@Entity</code> ，即：当 <code>@Entity</code> 注解与 <code>@Table</code>  注解指定的表名不同时，<code>@Table</code>  注解生效。</li></ul></li><li><p>属性注解</p><ul><li><code>@Id</code> 定义属性为数据库的主键,一个实体里面必须有一个主键，当声明了 <code>@Entity</code> 注解，该注解也必须声明；<code>@Id</code> 通常和<code>@GeneratedValue</code> 配合使用或成对出现。</li><li><code>@GenerateValue</code>  <code>JPA</code> 通用策略生成器，通常使用参数 <code>strategy = GenerationType.IDENTITY</code> 来表示自增主键。</li><li><code>@Clumn</code> 定义该属性对应数据表中的字段。</li></ul></li></ul>]]></content>
     
@@ -24,6 +53,8 @@
       
       <tag>编程</tag>
       
+      <tag>java</tag>
+      
     </tags>
     
   </entry>
@@ -35,12 +66,14 @@
     <link href="/2023/05/25/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <url>/2023/05/25/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     
-    <content type="html"><![CDATA[<ul><li><p>新建文章</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件名为“new article.md&quot;</span><br>hexo n <span class="hljs-string">&quot;new article&quot;</span><br></code></pre></td></tr></table></figure></li><li><p>本地启动预览服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure></li><li><p>发布到 <code>git hub</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清除缓存</span><br>hexo clean<br><span class="hljs-comment"># 生成静态页</span><br>hexo g<br><span class="hljs-comment"># 部署到github</span><br>hexo d<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    <content type="html"><![CDATA[<h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><ul><li><p>新建文章</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件名为“new article.md&quot;</span><br>hexo n <span class="hljs-string">&quot;new article&quot;</span><br><span class="hljs-comment"># 指定文件目录，目录要写d文件名</span><br>hexo n <span class="hljs-string">&quot;title&quot;</span> -p path/to/file<br></code></pre></td></tr></table></figure></li><li><p>本地启动预览服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure></li><li><p>发布到 <code>git hub</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清除缓存</span><br>hexo clean<br><span class="hljs-comment"># 生成静态页</span><br>hexo g<br><span class="hljs-comment"># 部署到github</span><br>hexo d<br></code></pre></td></tr></table></figure></li></ul><h4 id="分类与标签"><a href="#分类与标签" class="headerlink" title="分类与标签"></a>分类与标签</h4><ul><li><p>分类</p><p><code>category</code> 与 <code>categories</code> 等效</p><p>用法：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 一般用法，给文章添加分类</span><br>category: 类别<br><span class="hljs-comment"># 层级分类，将文章添加到子分类目录下</span><br>category: [类别,子类]<br><span class="hljs-comment"># 子分类等效写法</span><br>category:<br>- 类别<br>- 子类<br><span class="hljs-comment"># 多分类写法，官方指定写法，文章分类到“类别1”、“类别2”及“类别1”的子类“子类”下</span><br>category:<br>- [类别1]<br>- [类别2]<br>- [类别1,子类]<br></code></pre></td></tr></table></figure></li><li><p>标签</p><p>用法：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">tag:<br>- 标签1<br>- 标签2<br><span class="hljs-comment"># 与以下写法等效</span><br>tag: [标签1,标签2]<br></code></pre></td></tr></table></figure></li></ul>]]></content>
     
     
     <categories>
       
-      <category>教程备忘</category>
+      <category>技巧</category>
+      
+      <category>hexo</category>
       
     </categories>
     
@@ -59,7 +92,9 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>破解</category>
       
     </categories>
     
@@ -69,6 +104,8 @@
       <tag>编程软件</tag>
       
       <tag>JetBrains</tag>
+      
+      <tag>Windows</tag>
       
     </tags>
     
@@ -86,7 +123,9 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>破解</category>
       
     </categories>
     
@@ -113,14 +152,14 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Win10技巧</tag>
+      <tag>Windows</tag>
       
     </tags>
     
@@ -138,14 +177,18 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>破解</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>常用软件</tag>
+      <tag>软件</tag>
+      
+      <tag>Windows</tag>
       
     </tags>
     
@@ -182,14 +225,16 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Win10技巧</tag>
+      <tag>Windows</tag>
+      
+      <tag>Win10</tag>
       
     </tags>
     
@@ -207,7 +252,9 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>破解</category>
       
     </categories>
     
@@ -215,6 +262,8 @@
     <tags>
       
       <tag>常用软件</tag>
+      
+      <tag>破解</tag>
       
     </tags>
     
@@ -232,16 +281,16 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Win10技巧</tag>
+      <tag>软件</tag>
       
-      <tag>常用软件</tag>
+      <tag>Windows</tag>
       
     </tags>
     
@@ -259,7 +308,7 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
       
     </categories>
     
@@ -267,6 +316,8 @@
     <tags>
       
       <tag>编程软件</tag>
+      
+      <tag>Windows</tag>
       
     </tags>
     
@@ -284,14 +335,18 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>破解</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>编程软件</tag>
+      <tag>软件</tag>
+      
+      <tag>Windows</tag>
       
     </tags>
     
@@ -309,7 +364,9 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>编程软件</category>
       
     </categories>
     
@@ -336,7 +393,9 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
+      
+      <category>破解</category>
       
     </categories>
     
@@ -363,7 +422,7 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>常用软件</category>
       
     </categories>
     
@@ -388,14 +447,16 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>常用软件</tag>
+      <tag>软件</tag>
+      
+      <tag>Windows</tag>
       
     </tags>
     
@@ -413,14 +474,16 @@
     
     <categories>
       
-      <category>Windows</category>
+      <category>技巧</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Win10技巧</tag>
+      <tag>Windows</tag>
+      
+      <tag>Win10</tag>
       
     </tags>
     
