@@ -4,6 +4,48 @@
   
   
   <entry>
+    <title>集成redis并解决key乱码的问题</title>
+    <link href="/2023/05/26/java/SpringBoot/%E9%9B%86%E6%88%90redis%E5%B9%B6%E8%A7%A3%E5%86%B3key%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>/2023/05/26/java/SpringBoot/%E9%9B%86%E6%88%90redis%E5%B9%B6%E8%A7%A3%E5%86%B3key%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h4 id="集成-redis"><a href="#集成-redis" class="headerlink" title="集成 redis"></a>集成 <code>redis</code></h4><ul><li><p><code>pom.xml</code> 中添加依赖</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure></li><li><p><code>application.yml</code> 中添加配置</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">redis:</span><br>    <span class="hljs-attr">host:</span> <span class="hljs-string">localhost</span> <span class="hljs-comment"># Redis服务器地址</span><br>    <span class="hljs-attr">database:</span> <span class="hljs-number">0</span> <span class="hljs-comment"># Redis数据库索引（默认为0）</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">6379</span> <span class="hljs-comment"># Redis服务器连接端口</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-string">xxx</span> <span class="hljs-comment"># Redis服务器连接密码（默认为空）</span><br></code></pre></td></tr></table></figure></li><li><p>简单操作</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CodingmoreRedisApplicationTests</span> &#123;<br>    <span class="hljs-meta">@Resource</span><br>    <span class="hljs-keyword">private</span> RedisTemplate redisTemplate;<br><br>    <span class="hljs-meta">@Resource</span><br>    <span class="hljs-keyword">private</span> StringRedisTemplate stringRedisTemplate;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testRedis</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 添加</span><br>        redisTemplate.opsForValue().set(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;沉默王二&quot;</span>);<br>        <span class="hljs-comment">// 查询</span><br>        System.out.println(redisTemplate.opsForValue().get(<span class="hljs-string">&quot;name&quot;</span>));<br>        <span class="hljs-comment">// 删除</span><br>        redisTemplate.delete(<span class="hljs-string">&quot;name&quot;</span>);<br>        <span class="hljs-comment">// 更新</span><br>        redisTemplate.opsForValue().set(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;沉默王二的狗腿子&quot;</span>);<br>        <span class="hljs-comment">// 查询</span><br>        System.out.println(redisTemplate.opsForValue().get(<span class="hljs-string">&quot;name&quot;</span>));<br><br>        <span class="hljs-comment">// 添加</span><br>        stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;沉默王二&quot;</span>);<br>        <span class="hljs-comment">// 查询</span><br>        System.out.println(stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;name&quot;</span>));<br>        <span class="hljs-comment">// 删除</span><br>        stringRedisTemplate.delete(<span class="hljs-string">&quot;name&quot;</span>);<br>        <span class="hljs-comment">// 更新</span><br>        stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;沉默王二的狗腿子&quot;</span>);<br>        <span class="hljs-comment">// 查询</span><br>        System.out.println(stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;name&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li></ul><h4 id="解决使用-redisTemplate-序列化时-key-出现乱码"><a href="#解决使用-redisTemplate-序列化时-key-出现乱码" class="headerlink" title="解决使用 redisTemplate 序列化时 key 出现乱码"></a>解决使用 <code>redisTemplate</code> 序列化时 <code>key</code> 出现乱码</h4><p><img src="https://s2.loli.net/2023/05/26/r3T7A9MSBCbgdhL.png" alt="image-20230526174955220"></p><p>配置自定义的 <code>redis</code> 配置类：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RedisConfig</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RedisTemplate&lt;Object, Object&gt; <span class="hljs-title function_">redisTemplate</span><span class="hljs-params">(RedisConnectionFactory redisConnectionFactory)</span> &#123;<br>        RedisTemplate&lt;Object, Object&gt; template = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br>        template.setConnectionFactory(redisConnectionFactory);<br><br>        <span class="hljs-type">Jackson2JsonRedisSerializer</span> <span class="hljs-variable">jackson2JsonRedisSerializer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Jackson2JsonRedisSerializer</span>(Object.class);<br>        template.setValueSerializer(jackson2JsonRedisSerializer);<br><br>        RedisSerializer&lt;String&gt; redisSerializer = template.getStringSerializer();<br>        template.setKeySerializer(redisSerializer);<br>        template.setHashKeySerializer(redisSerializer);<br>        <span class="hljs-keyword">return</span> template;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>java</category>
+      
+      <category>SpringBoot</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JPQL查询</title>
+    <link href="/2023/05/26/java/jpa/JPQL%E6%9F%A5%E8%AF%A2/"/>
+    <url>/2023/05/26/java/jpa/JPQL%E6%9F%A5%E8%AF%A2/</url>
+    
+    <content type="html"><![CDATA[<h4 id="默认情况下，-Query-注解使用-JPQL-来进行查询"><a href="#默认情况下，-Query-注解使用-JPQL-来进行查询" class="headerlink" title="默认情况下，@Query 注解使用 JPQL 来进行查询"></a>默认情况下，<code>@Query</code> 注解使用 <code>JPQL</code> 来进行查询</h4><p>例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Query(&quot;select u from User u where u.name like %?1%&quot;)</span><br>List&lt;User&gt; <span class="hljs-title function_">findByNameLike</span><span class="hljs-params">(String name)</span>;<br></code></pre></td></tr></table></figure><p><code>@Query</code> 注解中 <code>from</code> 指定的 <code>User</code> 为 <code>@Entity</code> 注解的实体类的类名，而非通常 <code>SQL</code> 中的表名。</p><p>注意：当使用 <code>@Entity</code> 指定了不同于实体类的表名时，例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Entity(name = &quot;admin_users&quot;)</span><br><span class="hljs-meta">@Accessors(chain = true)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-meta">@Id</span><br>    <span class="hljs-meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span><br>    <span class="hljs-meta">@Column(name = &quot;id&quot;, nullable = false)</span><br>    <span class="hljs-keyword">private</span> Integer id;<br>&#125;<br></code></pre></td></tr></table></figure><p><code>@Query</code> 中的语句要做出相应变动：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Query(&quot;select u from admin_users u where u.name like %?1%&quot;)</span><br>List&lt;User&gt; <span class="hljs-title function_">findByNameLike</span><span class="hljs-params">(String name)</span>;<br></code></pre></td></tr></table></figure><p><strong>实体类名与映射的数据表名不同时，最好按惯例使用<code>@Table</code>注解</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>java</category>
+      
+      <category>jpa</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Spring-boot-devtools设置</title>
     <link href="/2023/05/25/java/SpringBoot/Spring-boot-dev-tools%E8%AE%BE%E7%BD%AE/"/>
     <url>/2023/05/25/java/SpringBoot/Spring-boot-dev-tools%E8%AE%BE%E7%BD%AE/</url>
@@ -51,9 +93,9 @@
     
     <tags>
       
-      <tag>编程</tag>
-      
       <tag>java</tag>
+      
+      <tag>编程</tag>
       
     </tags>
     
@@ -186,9 +228,9 @@
     
     <tags>
       
-      <tag>软件</tag>
-      
       <tag>Windows</tag>
+      
+      <tag>软件</tag>
       
     </tags>
     
@@ -288,9 +330,9 @@
     
     <tags>
       
-      <tag>软件</tag>
-      
       <tag>Windows</tag>
+      
+      <tag>软件</tag>
       
     </tags>
     
@@ -344,9 +386,9 @@
     
     <tags>
       
-      <tag>软件</tag>
-      
       <tag>Windows</tag>
+      
+      <tag>软件</tag>
       
     </tags>
     
@@ -454,9 +496,9 @@
     
     <tags>
       
-      <tag>软件</tag>
-      
       <tag>Windows</tag>
+      
+      <tag>软件</tag>
       
     </tags>
     
@@ -496,7 +538,7 @@
     <link href="/2022/06/30/hello-world/"/>
     <url>/2022/06/30/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
     
