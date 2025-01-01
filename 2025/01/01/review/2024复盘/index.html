@@ -16,21 +16,22 @@
   <meta name="author" content="Leejohn">
   <meta name="keywords" content="">
   
-    <meta name="description" content="可以使用 Netplan 工具和配置文件，为 Ubuntu Server 设置静态 IP 地址。Netplan 的配置文件通常位于&#x2F;etc&#x2F;netplan目录，取决于你的系统版本和实际环境，文件名可能是01-netcfg.yaml或50-cloud-init.yaml 示例： 12345678910111213network:	version: 2    renderer: networkd #">
+    <meta name="description" content="2024年结束，投资收益+工资结余，总资产来到56w+，资产20%+。 看起来似乎不错，但投资收益仅有8.6%，比较差劲了。 主要原因，一个是年初的大跌没有控制好回撤，另一个是没有一个清晰的策略来控制。 比较值得庆幸的是，收获了两个回测网站：禄得网和果仁网，以及两个清晰的策略：可转债低规模策略和小市值策略。 凭借两个策略的执行和行情的改观，在下半年才收复了回撤，并实现了正收益。 目前，尚有一个多市">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu24.04设置静态IP地址.md">
-<meta property="og:url" content="http://example.com/2024/07/22/technical/Ubuntu24.04%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/index.html">
+<meta property="og:title" content="2024复盘.md">
+<meta property="og:url" content="http://example.com/2025/01/01/review/2024%E5%A4%8D%E7%9B%98/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="可以使用 Netplan 工具和配置文件，为 Ubuntu Server 设置静态 IP 地址。Netplan 的配置文件通常位于&#x2F;etc&#x2F;netplan目录，取决于你的系统版本和实际环境，文件名可能是01-netcfg.yaml或50-cloud-init.yaml 示例： 12345678910111213network:	version: 2    renderer: networkd #">
+<meta property="og:description" content="2024年结束，投资收益+工资结余，总资产来到56w+，资产20%+。 看起来似乎不错，但投资收益仅有8.6%，比较差劲了。 主要原因，一个是年初的大跌没有控制好回撤，另一个是没有一个清晰的策略来控制。 比较值得庆幸的是，收获了两个回测网站：禄得网和果仁网，以及两个清晰的策略：可转债低规模策略和小市值策略。 凭借两个策略的执行和行情的改观，在下半年才收复了回撤，并实现了正收益。 目前，尚有一个多市">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-22T05:59:08.000Z">
-<meta property="article:modified_time" content="2024-07-22T06:52:51.401Z">
+<meta property="article:published_time" content="2025-01-01T08:03:21.000Z">
+<meta property="article:modified_time" content="2025-01-01T08:21:38.519Z">
 <meta property="article:author" content="Leejohn">
+<meta property="article:tag" content="总结">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Ubuntu24.04设置静态IP地址.md - 笔记</title>
+  <title>2024复盘.md - 笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,7 +184,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Ubuntu24.04设置静态IP地址.md"></span>
+            <span id="subtitle" data-typed-text="2024复盘.md"></span>
           
         </div>
 
@@ -194,8 +195,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-22 13:59" pubdate>
-          2024年7月22日 下午
+        <time datetime="2025-01-01 16:03" pubdate>
+          2025年1月1日 下午
         </time>
       </span>
     
@@ -206,7 +207,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          989 字
+          321 字
         
       </span>
     
@@ -217,7 +218,7 @@
         
         
         
-          9 分钟
+          3 分钟
         
       </span>
     
@@ -255,31 +256,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ubuntu24.04设置静态IP地址.md</h1>
+            <h1 style="display: none">2024复盘.md</h1>
             
             
               <div class="markdown-body">
                 
-                <p>可以使用 <code>Netplan</code> 工具和配置文件，为 <code>Ubuntu Server</code> 设置静态 <code>IP</code> 地址。<code>Netplan</code> 的配置文件通常位于<code>/etc/netplan</code>目录，取决于你的系统版本和实际环境，文件名可能是<code>01-netcfg.yaml</code>或<code>50-cloud-init.yaml</code></p>
-<p>示例：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">network:</span><br>	<span class="hljs-attr">version:</span> <span class="hljs-number">2</span><br>    <span class="hljs-attr">renderer:</span> <span class="hljs-string">networkd</span> <span class="hljs-comment"># 桌面环境使用 NetworkManager，Ubuntu Server 和无头环境使用networkd</span><br>    <span class="hljs-attr">ethernets:</span><br>        <span class="hljs-attr">ens33:</span> <span class="hljs-comment"># 替换为你的网络接口名称</span><br>            <span class="hljs-attr">dhcp4:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 关闭 DHCP</span><br>            <span class="hljs-attr">dhcp6:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 关闭 DHCP</span><br>            <span class="hljs-attr">addresses:</span> [<span class="hljs-number">192.168</span><span class="hljs-number">.100</span><span class="hljs-number">.122</span><span class="hljs-string">/24</span>] <span class="hljs-comment"># 静态 IP 地址和子网掩码</span><br>            <span class="hljs-attr">routes:</span><br>              <span class="hljs-bullet">-</span> <span class="hljs-attr">to:</span> <span class="hljs-string">default</span><br>                <span class="hljs-attr">via:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.100</span><span class="hljs-number">.1</span> <span class="hljs-comment"># 网关地址</span><br>            <span class="hljs-attr">nameservers:</span><br>                <span class="hljs-attr">addresses:</span> [<span class="hljs-number">114.114</span><span class="hljs-number">.114</span><span class="hljs-number">.114</span>] <span class="hljs-comment"># DNS 服务器地址</span><br></code></pre></td></tr></table></figure>
-
-<p>保存文件后，执行以下命令应用更改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo netplan apply<br></code></pre></td></tr></table></figure>
-
-<p>查看子网掩码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ip addr show eth0(这里替换为真实网卡)<br></code></pre></td></tr></table></figure>
-
-<p>输出类似：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000<br>    <span class="hljs-built_in">link</span>/ether dc:a6:32:5c:78:d5 brd ff:ff:ff:ff:ff:ff<br>    inet 192.168.4.251/24 brd 192.168.4.255 scope global eth0<br>       valid_lft forever preferred_lft forever<br>    inet6 fe80::dea6:32ff:fe5c:78d5/64 scope <span class="hljs-built_in">link</span> <br>       valid_lft forever preferred_lft forever<br></code></pre></td></tr></table></figure>
-
-<p>这里 <code>/24</code> 表示子网掩码。</p>
-<p>查看网关：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ route -n<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">Kernel IP routing table<br>Destination     Gateway         Genmask         Flags Metric Ref    Use Iface<br>0.0.0.0         192.168.4.1     0.0.0.0         UG    0      0        0 eth0<br>192.168.4.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0<br></code></pre></td></tr></table></figure>
-
-<p><code>Gateway</code> 就是网关的 <code>IP</code> 地址。</p>
+                <p>2024年结束，投资收益+工资结余，总资产来到56w+，资产20%+。</p>
+<p>看起来似乎不错，但投资收益仅有8.6%，比较差劲了。</p>
+<p>主要原因，一个是年初的大跌没有控制好回撤，另一个是没有一个清晰的策略来控制。</p>
+<p>比较值得庆幸的是，收获了两个回测网站：禄得网和果仁网，以及两个清晰的策略：可转债低规模策略和小市值策略。</p>
+<p>凭借两个策略的执行和行情的改观，在下半年才收复了回撤，并实现了正收益。</p>
+<p>目前，尚有一个多市场再平衡策略在观察中，收益不高，但胜在波动极低，较为稳定，暂时还没有想到进一步提高收益优化的方案，继续观察。</p>
+<p>2025，继续执行可转债和小市值两个策略，并计划将可转债仓位与小市值仓位调整至6：4，小市值波动过于剧烈，确实相当考验心理承受能力。</p>
+<p>期待来年吧。</p>
 
                 
               </div>
@@ -298,7 +287,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E5%B7%A7/" class="category-chain-item">技巧</a>
+  <a href="/categories/%E7%90%86%E8%B4%A2/" class="category-chain-item">理财</a>
   
   
 
@@ -310,6 +299,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%80%BB%E7%BB%93/">#总结</a>
+      
+    </div>
+  
 </div>
 
 
@@ -318,8 +314,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Ubuntu24.04设置静态IP地址.md</div>
-      <div>http://example.com/2024/07/22/technical/Ubuntu24.04设置静态IP地址/</div>
+      <div>2024复盘.md</div>
+      <div>http://example.com/2025/01/01/review/2024复盘/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +327,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月22日</div>
+          <div>2025年1月1日</div>
         </div>
       
       
@@ -361,18 +357,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/01/review/2024%E5%A4%8D%E7%9B%98/" title="2024复盘.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2024复盘.md</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/04/review/%E5%8F%8D%E6%80%9D/" title="24年一月反思">
-                        <span class="hidden-mobile">24年一月反思</span>
+                      <a href="/2024/07/22/technical/Ubuntu24.04%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP%E5%9C%B0%E5%9D%80/" title="Ubuntu24.04设置静态IP地址.md">
+                        <span class="hidden-mobile">Ubuntu24.04设置静态IP地址.md</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
